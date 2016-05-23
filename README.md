@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/opspluslove/ansible-riemann.svg?branch=master)](https://travis-ci.org/opspluslove/ansible-riemann)
+
 riemann
 =========
 
