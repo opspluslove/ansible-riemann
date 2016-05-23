@@ -1,0 +1,11 @@
+---
+riemann_version: 0.2.11
+riemann_deb_checksum: "md5:8f074b9ad3321a962d3a32a7a54cf930"
+riemann_deb_url: "https://aphyr.com/riemann/riemann_{{ riemann_version }}_all.deb"
+riemann_servers:
+  tcp:
+    host: '"0.0.0.0"'
+    port: 5555
+  udp:
+    host: '"0.0.0.0"'
+    port: 5555

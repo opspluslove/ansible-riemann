@@ -1,0 +1,26 @@
+---
+- name: Install riemann dependencies
+  apt: name="{{ item }}" state=latest
+  with_items:
+    - openjdk-7-jdk
+
+- name: Download riemann deb package
+  get_url:
+    url: "{{ riemann_deb_url }}"
+    dest: "/tmp/riemann_{{ riemann_version }}.deb"
+    checksum: "{{ riemann_deb_checksum }}"
+
+- name: Install riemann package
+  apt: deb="/tmp/riemann_{{ riemann_version }}.deb"
+
+- name: Copy riemann config
+  template:
+    src: riemann.config
+    dest: /etc/riemann/riemann.config
+    owner: riemann
+    group: riemann
+    mode: 0644
+  notify: restart riemann
+
+- name: Ensure riemann is started and enabled
+  service: name=riemann state=started enabled=yes
